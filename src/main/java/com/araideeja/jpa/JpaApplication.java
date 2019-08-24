@@ -28,8 +28,15 @@ public class JpaApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {	
-		addPolicy(2);
-	
+//		addPolicy(2);
+//		
+//		policyRepository.findAll().forEach(c -> log.info(c.toString()));
+//		policyPlanRepository.findAll().forEach(c -> log.info(c.toString()));
+		
+		Policy updatingPolicy = policyRepository.findByPolicyCode("Pol1");
+		updatingPolicy.setPolicyCode("Pol3");
+		policyRepository.save(updatingPolicy);
+		
 		policyRepository.findAll().forEach(c -> log.info(c.toString()));
 		policyPlanRepository.findAll().forEach(c -> log.info(c.toString()));
 	}
